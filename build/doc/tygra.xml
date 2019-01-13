@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectSchemaDefinitions xmlns="http://schemas.microsoft.com/build/2009/properties">
+  <ItemType Name="TygraShader" DisplayName="TyGrA Shader" />
+  <ContentType Name="TglShader" DisplayName="OpenGL Shader" ItemType="TygraShader" />
+  <FileExtension Name=".glsl" ContentType="TglShader" />
+</ProjectSchemaDefinitions>

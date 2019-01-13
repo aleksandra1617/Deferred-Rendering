@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PropertyPageSchema Include="$(MSBuildThisFileDirectory)tygra.xml" />
+    <AvailableItemName Include="TygraShader" />
+  </ItemGroup>
+  <ItemGroup>
+    <!--<TyShaderFiles Include="**\*.glsl"/>-->
+    <TygraShaderFiles Include="@(TygraShader)"/>
+  </ItemGroup>
+  <Target Name="TygraCopyShaderFiles" Inputs="@(TygraShaderFiles)" Outputs="@(TygraShaderFiles->'$(OutDir)%(Filename)%(Extension)')">
+    <Message Text="Copying shader files to build directory... @(TygraShaderFiles)" Importance="high" />
+    <Copy SourceFiles="@(TygraShaderFiles)" DestinationFiles="@(TygraShaderFiles->'$(OutDir)%(Filename)%(Extension)')" />
+  </Target>
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildDependsOn);
+      TygraCopyShaderFiles
+    </BuildDependsOn>
+  </PropertyGroup>
+</Project>
